@@ -1,7 +1,7 @@
 package day_01_Lambda;
 
 public class Universite {
- /*
+    /*
     TASK :
     fields --> Universite (String)
                bolum (String)
@@ -16,10 +16,10 @@ public class Universite {
                toString
      */
 
-    private String  universite;
-    private String  bolum;
-    private int ogrSayisi;
-    private int notOrt;
+   private String  universite;
+   private String  bolum;
+   private int ogrSayisi;
+   private int notOrt;
 
     public Universite(){
     }
@@ -65,11 +65,11 @@ public class Universite {
 
     @Override
     public String toString() {
-        return "Universite{" +
+        return
                 "universite='" + universite + '\'' +
                 ", bolum='" + bolum + '\'' +
                 ", ogrSayisi=" + ogrSayisi +
                 ", notOrt=" + notOrt +
-                '}';
+               "\n";
     }
 }

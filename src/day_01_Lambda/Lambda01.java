@@ -1,4 +1,5 @@
 package day_01_Lambda;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +19,9 @@ public class Lambda01 {
 	     	ve hatasiz code yazma acilarindan cok faydalidir.
 	 	4) Lambda sadece collections'larda(List, Queue ve Set) ve array'lerde kullanilabilir ancak map'lerde kullanılmaz.
            Lambda kullanmak hatasız code kullanmaktır.
+
+                "Functional Programming"--> CINCIK Programming
+                "Structured Programming"--> AMELE Programming
 
             Collections Nedir?
             Çoğu yazılım tek tek öğeler yerine öğelerden oluşan toplulukları depolar ve onlar üzerinde işlem
@@ -44,9 +48,9 @@ public class Lambda01 {
         System.out.println("\n   ***   ");
         printCiftElFunctional1(sayi);
         System.out.println("\n   ***   ");
-        printCiftOtzKckFunctional( sayi);
+        printCiftOtzKckFunctional(sayi);
         System.out.println("\n   ***   ");
-        printCiftOtzBykFunctional( sayi);
+        printCiftOtzBykFunctional(sayi);
         System.out.println("\n   ***   ");
     }
 
@@ -110,7 +114,7 @@ public class Lambda01 {
 
         sayi.
                 stream().
-                filter(t -> t % 2 == 0).
+                filter(t -> t % 2 == 0).//filter() --> ile icersindeki elemanlari istenen sarta göre filtreleme (secim) yapar
                 forEach(Lambda01::yazdir);
 
     }
@@ -129,25 +133,25 @@ public class Lambda01 {
 
     }
 
-    //Task : functional Programming ile list elemanlarinin 34 den kucuk cift olanalrini ayni satirda aralarina bosluk birakarak print ediniz.
+    //Task :functional Programming ile list elemanlarinin 34 den kucuk cift olanalrini ayni satirda aralarina bosluk birakarak print ediniz.
     public static void printCiftOtzKckFunctional(List<Integer> sayi) {
         sayi.
                 stream().
                 // filter(t -> t % 2 == 0 && t < 34).
                         filter(Lambda01::ciftBul).//method ref.
-                filter(t -> t <34).//lambda exp.
+                filter(t -> t < 34).//lambda exp.
                 forEach(Lambda01::yazdir);
     }
 
-        //Task : functional Programming ile list elemanlarinin 34 den buyk veya cift olanalrini ayni satirda aralarina bosluk birakarak print ediniz.
+//Task : functional Programming ile list elemanlarinin 34 den buyk veya cift olanalrini ayni satirda aralarina bosluk birakarak print ediniz.
 
 
     public static void printCiftOtzBykFunctional(List<Integer> sayi) {
         sayi.
                 stream().
-                filter(t -> t % 2 == 0 || t > 34).//çift veya 34'den buyuk elelmaları filtreler 44 63 65 38
-                // filter(Lambda01::ciftBul).//method ref.
-                // filter(t -> t >34).//lambda exp.
+                filter(t -> t % 2 == 0 || t > 34).//çift veya 34'den buyuk elemanları filtreler 44 63 65 38
+                // filter(lambdaTutorial.Lambda01::ciftBul).//method ref.
+                // filter(t -> t > 34).//lambda exp.
                         forEach(Lambda01::yazdir);
     }
 }

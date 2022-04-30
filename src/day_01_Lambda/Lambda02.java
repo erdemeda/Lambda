@@ -1,12 +1,13 @@
 package day_01_Lambda;
-import day_01_Lambda.Lambda01;
+
+import lambdaTutorial.Lambda01;
 
 import java.util.*;
 
 public class Lambda02 {
     public static void main(String[] args) {
 
-        List<Integer> sayi = new ArrayList<>(Arrays.asList(4, 2, 6, 11, -5, 7, 3, 15));
+        List<Integer> sayi = new ArrayList<>(Arrays.asList(4, 2, 6, 11,5, 7, 3));
         ciftKarePrint(sayi);//16 4 36
         System.out.println("\n   ***   ");
         tekKupBirFazlaPrint(sayi);//1332 -124 344 28 3376
@@ -34,7 +35,7 @@ public class Lambda02 {
 
     }
 
-        // Task : Functional Programming ile listin cift elemanlarinin  karelerini ayni satirda aralarina bosluk bırakarak print ediniz
+    // Task : Functional Programming ile listin cift elemanlarinin  karelerini ayni satirda aralarina bosluk bırakarak print ediniz
 
     public static void ciftKarePrint(List<Integer> sayi) {
         sayi.
@@ -111,7 +112,7 @@ public class Lambda02 {
         b degerini her zamana  stream()'dan akısdan alır
         a ilk degerinden sonraki her değeri action(işlem)'dan alır
 
-              */
+               */
         System.out.println("Lambda exp. : " + toplam);
         //Method Ref...
         Optional<Integer> topla = sayi.stream().reduce(Integer::sum);
@@ -144,7 +145,9 @@ public class Lambda02 {
         System.out.println(minSayiMath);
         //3. yontem Lambda Expression
         int minSayiLJambda = (sayi.stream().reduce(Integer.MAX_VALUE, (x, y) -> x < y ? x : y));
-        System.out.println(minSayiLJambda);
+        int minSayiLJambda1 = (sayi.stream().reduce(0, (x, y) -> x < y ? x : y));//yukarıaki ile aynı sonucu vermez
+        System.out.println("xxxx"+minSayiLJambda);
+        System.out.println("aaaa"+minSayiLJambda1);
         //4. yontem Method Reference --> Haluk class
         Optional<Integer> minSayiHaluk = sayi.stream().reduce(Lambda02::byHalukMin);
         System.out.println(minSayiHaluk);
@@ -173,7 +176,7 @@ public class Lambda02 {
         //Sorted() methodu tekrarlı kullanılırsa en son kullanılan aktif olur.
     }
 
-        // Task : list'in tek  elemanlarinin kareleri ni buykten kucuge  print ediniz.
+    // Task : list'in tek  elemanlarinin kareleri ni buykten kucuge  print ediniz.
 
     public static void tekKareBkPrint(List<Integer> sayi) {
         sayi.//akıs kaynagı
@@ -182,7 +185,11 @@ public class Lambda02 {
                 map(t->t*t).//fitrelenen cift sayı karesi alındı
                 sorted(Comparator.reverseOrder()).//karesi alınan elemanlar ters(b->k) sıralandı
                 forEach(Lambda01::yazdir);//print edildi
+//reverseOrder() => Comparator Class’ının bir methodudur. Doğal sıralamanın tersini (büyükten küçüğe) uygulayan
+// bir Comparator (karşılaştırıcı) return eder.
 
+        //reversed() => Bu karşılaştırıcının (comparator) ters sıralanmasını uygulayan bir karşılaştırıcı
+        //(comparator) return eder.
 
     }
 }

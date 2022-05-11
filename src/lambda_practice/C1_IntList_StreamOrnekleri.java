@@ -1,13 +1,14 @@
 package lambda_practice;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
 public class C1_IntList_StreamOrnekleri {
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>(Arrays.asList(-5, -8, -2, -12, 0, 1, 12, 5, 6, 9, 15, 8));
-
         hepsiniYaz(list);
         negatifleriYaz(list);
         System.out.println("pozitifList(list) = " + pozitifList(list));
@@ -21,15 +22,10 @@ public class C1_IntList_StreamOrnekleri {
         System.out.println("negatiflerinKareleri(list) = " + negatiflerinKareleri(list));
         System.out.println("besdenBuyukVarMi(list) = " + besdenBuyukVarMi(list));
         System.out.println("sifirdanKucukMu(list) = " + sifirdanKucukMu(list));
-        System.out.println("yuzeEsitMi(list) = " + yuzeEsitMi(list));
-        System.out.println("sifiraEsitMi(list) = " + sifiraEsitMi(list));
-        System.out.println("ilkBesToplam(list) = " + ilkBesToplam(list));
-        System.out.println("sonBesListele(list) = " + sonBesListele(list));
     }
 
     // S1:listi aralarinda bosluk birakarak yazdiriniz //
     public static void hepsiniYaz(List<Integer> l) {
-
         l.stream().forEach(t -> System.out.print(t + " "));
     }
 
@@ -45,17 +41,22 @@ public class C1_IntList_StreamOrnekleri {
         return l.stream().filter(t -> t > 0).collect(Collectors.toList());
     }
 
+
     // S4: list in elemanlarin karelerinden yeni bir list olusturalim
+
     public static List<Integer> kareleriList(List<Integer> l) {
         System.out.println();
         return l.stream().map(t -> t * t).collect(Collectors.toList());
     }
+
 
     //S5 : list in elemanlarin karelerinden tekrarsiz yeni bir list olusturalim
     public static List<Integer> kareleriTekrarsizList(List<Integer> l) {
         System.out.println();
         return l.stream().map(t -> t * t).distinct().collect(Collectors.toList());
     }
+
+
 
     //S6: listin elemanlarini kucukten buyuge siralayalim
     public static void sirala(List<Integer> l) {
@@ -83,7 +84,6 @@ public class C1_IntList_StreamOrnekleri {
 
     // S10 :list elemanlarini toplamini bulalim
     public static int toplam(List<Integer> l){
-
         return l.stream().reduce(0,(x,y)-> x+y);
     }
 
@@ -99,39 +99,39 @@ public class C1_IntList_StreamOrnekleri {
     }
 
     // S12 : listeden 5 den buyuk  sayi var mi?
-    public static boolean besdenBuyukVarMi(List<Integer> l) {
-
+        public static boolean besdenBuyukVarMi(List<Integer> l) {
         return l.stream().anyMatch(t-> t>5); //true
-    }
+        }
+
 
     // S13 : listenin tum elemanlari sifirdan kucuk mu?
     public static boolean sifirdanKucukMu(List<Integer> l) {
-
         return l.stream().allMatch(t-> t<0); //false
     }
 
     // S14: listenin 100 e esit elemani yok mu ?
-    public static boolean yuzeEsitMi(List<Integer> l) {
-
-        return l.stream().anyMatch(t-> t==100); //false
-
+    public static boolean yuzeesit(List<Integer> l) {
+        return l.stream().noneMatch(t -> t == 100);  //true
     }
 
-    // S15: listenin sifira esit elemani yok mu?
-    public static boolean sifiraEsitMi(List<Integer> l) {
 
-        return l.stream().anyMatch(t-> t==0); //true
-        }
+    // S15: listenin sifira esit elemani yok mu?
+    public static boolean sifiraesit(List<Integer> l) {
+        return l.stream().noneMatch(t -> t == 0); //false, 0 var
+    }
+
 
     // S16:  listenin ilk 5 elemanini topla?
-    public static int ilkBesToplam(List<Integer> l){
-
-        return l.stream().limit(5).reduce(0,(x,y)-> x+y);
+    public static int ilkBesTop(List<Integer> list) {
+        return list.stream().limit(5).reduce(0, (x, y) -> x + y);
     }
 
     //S17: listenin son bes elemaninin  listele
-    public static List<Integer> sonBesListele(List<Integer> l){
 
-        return l.stream().skip(l.size()-5). collect(Collectors.toList());
+    public static List<Integer> sonBes(List<Integer> l) {
+        long n = l.size() - 5; //son bes demek ,8 elemanli bir listem var son 5 icin, 5 cikardigimda 3 unu atlayip son besi yazdiracak
+
+        return l.stream().skip(n).collect(Collectors.toList());
     }
+
 }
